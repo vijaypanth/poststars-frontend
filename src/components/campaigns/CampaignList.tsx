@@ -7,7 +7,7 @@ export default function CampaignList() {
 
   const fetchCampaigns = async () => {
     try {
-      const res = await fetch('http://127.0.0.1:8000/campaigns/');
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/`);
       const data = await res.json();
       setCampaigns(data);
     } catch (err) {
@@ -18,7 +18,7 @@ export default function CampaignList() {
   const handleDelete = async (id: number) => {
     if (!confirm('Delete this campaign?')) return;
     try {
-      const res = await fetch(`http://127.0.0.1:8000/campaigns/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {

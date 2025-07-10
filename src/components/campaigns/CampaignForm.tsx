@@ -28,7 +28,6 @@ export default function CampaignForm({
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !goal || !platform) {
@@ -37,15 +36,16 @@ export default function CampaignForm({
     }
     setLoading(true);
     try {
+      
       if (isEdit) {
-        await axios.put(`http://localhost:8000/campaigns/${initialData.id}`, {
+        await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${initialData.id}`, {
           name,
           goal,
           platform,
         });
         toast.success("Campaign updated successfully!");
       } else {
-        await axios.post("http://localhost:8000/campaigns/", {
+        await axios.post("${process.env.NEXT_PUBLIC_API_URL}/campaigns/", {
           name,
           goal,
           platform,

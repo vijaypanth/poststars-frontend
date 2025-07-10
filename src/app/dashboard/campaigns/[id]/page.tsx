@@ -15,7 +15,7 @@ export default function EditCampaignPage() {
   useEffect(() => {
     async function fetchCampaign() {
       try {
-        const res = await fetch(`http://localhost:8000/campaigns/${id}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/${id}`);
         if (!res.ok) throw new Error('Failed to fetch');
         const data = await res.json();
         setCampaign(data);
