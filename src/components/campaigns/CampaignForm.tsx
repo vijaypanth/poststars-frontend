@@ -45,7 +45,7 @@ export default function CampaignForm({
         });
         toast.success("Campaign updated successfully!");
       } else {
-        await axios.post("${process.env.NEXT_PUBLIC_API_URL}/campaigns/", {
+        await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/campaigns/`, {
           name,
           goal,
           platform,
@@ -106,7 +106,7 @@ export default function CampaignForm({
             ))}
           </div>
         </div>
-        <Button type="submit" disabled={loading} className="w-full">
+        <Button type="submit" disabled={loading} className="w-full bg-purple-600 text-white py-2 rounded">
           {loading ? (isEdit ? "Updating..." : "Creating...") : isEdit ? "Update Campaign" : "Create Campaign"}
         </Button>
       </form>
